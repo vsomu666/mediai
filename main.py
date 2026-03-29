@@ -1,7 +1,6 @@
 from dotenv import load_dotenv
 import os
 load_dotenv()
-os.environ["GROQ_API_KEY"] = os.getenv("GROQ_API_KEY", "")
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
@@ -70,6 +69,11 @@ def extract_json(text: str) -> dict:
         except json.JSONDecodeError:
             pass
     raise ValueError(f"Could not parse JSON from agent response: {text[:300]}")
+
+@app.get("/debug-key")
+async def debug_key():
+    key = os.getenv("GROQ_API_KEY", "NOT SET")
+    return {"key_set": bool(key), "starts_with": key[:7] if key else ""}
 
 @app.post("/analyze", response_model=AnalyzeResponse)
 async def analyze(request: AnalyzeRequest):

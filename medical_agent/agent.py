@@ -1,7 +1,9 @@
+from dotenv import load_dotenv
+import os
+load_dotenv()
+
 from google.adk.agents import Agent
 
-# ── Single Agent (Groq/Llama doesn't support multi-agent tool calls) ───────────
-# All logic is handled in one powerful prompt instead of sub-agents
 root_agent = Agent(
     name="medical_root",
     model="groq/llama-3.3-70b-versatile",
@@ -42,9 +44,7 @@ root_agent = Agent(
     """,
 )
 
-# ── Expose for ADK ─────────────────────────────────────────────────────────────
 agent = root_agent
-
 
 def run(input: str):
     return agent.run(input)
