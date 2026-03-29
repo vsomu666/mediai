@@ -31,4 +31,4 @@ __pycache__/
 .env
 .env.local
 .env.*
-medical_agent/.env
+medical_agent/.env.env 

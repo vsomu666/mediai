@@ -1,4 +1,5 @@
-".env" 
-"medical_agent/.env" 
-".env" 
-"medical_agent/.env" 
+.env 
+medical_agent/.env 
+__pycache__/ 
+.venv/ 
+*.pyc 
