@@ -32,3 +32,4 @@ __pycache__/
 .env.local
 .env.*
 medical_agent/.env.env 
+.env 
